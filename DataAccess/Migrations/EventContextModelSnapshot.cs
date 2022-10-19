@@ -99,22 +99,21 @@ namespace DataAccess.Migrations
 
                     b.HasKey("EventID");
 
+                    b.HasIndex("CategoryID");
+
+                    b.HasIndex("CityID");
+
                     b.ToTable("Events");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Organizer", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<int>("EventID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -124,12 +123,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Concrete.Participant", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -175,6 +168,96 @@ namespace DataAccess.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EventUser", b =>
+                {
+                    b.Property<int>("EventsEventID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersUserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("EventsEventID", "UsersUserID");
+
+                    b.HasIndex("UsersUserID");
+
+                    b.ToTable("EventUser");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Event", b =>
+                {
+                    b.HasOne("Entities.Concrete.Category", "Category")
+                        .WithMany("Events")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Concrete.City", "City")
+                        .WithMany("Events")
+                        .HasForeignKey("CityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Organizer", b =>
+                {
+                    b.HasOne("Entities.Concrete.User", "User")
+                        .WithOne("Organizer")
+                        .HasForeignKey("Entities.Concrete.Organizer", "ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Participant", b =>
+                {
+                    b.HasOne("Entities.Concrete.User", "User")
+                        .WithOne("Participant")
+                        .HasForeignKey("Entities.Concrete.Participant", "ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EventUser", b =>
+                {
+                    b.HasOne("Entities.Concrete.Event", null)
+                        .WithMany()
+                        .HasForeignKey("EventsEventID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Concrete.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Category", b =>
+                {
+                    b.Navigation("Events");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.City", b =>
+                {
+                    b.Navigation("Events");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.User", b =>
+                {
+                    b.Navigation("Organizer")
+                        .IsRequired();
+
+                    b.Navigation("Participant")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

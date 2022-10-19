@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Event
+    public class Event:IEntity
     {
+        public Event()
+        {
+            Users = new HashSet<User>();
+        }
       
         [Key]
         public int EventID { get; set; }
@@ -23,6 +28,9 @@ namespace Entities.Concrete
         public bool IsItTicketed { get; set; }
         public decimal? TicketPrice { get; set; }
 
+        public Category Category { get; set; }
+        public City City { get; set; }
+        public ICollection<User> Users { get; set; }
 
     }
 }
