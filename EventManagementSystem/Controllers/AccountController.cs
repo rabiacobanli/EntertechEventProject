@@ -1,10 +1,18 @@
-﻿using Entities.DTOs;
+﻿using DataAccess.Concrete;
+using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventManagementSystem.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly EventContext _eventContext;
+        public AccountController(EventContext eventContext)
+        {
+            _eventContext = eventContext;
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -29,7 +37,14 @@ namespace EventManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                User user = new()
+                {
+                    Email = userForRegisterDto.Email,
+                    Password = userForRegisterDto.Password,
+                    FirstName = userForRegisterDto.FirstName,
+                    LastName = userForRegisterDto.LastName,
 
+                }
             }
 
             return View();
