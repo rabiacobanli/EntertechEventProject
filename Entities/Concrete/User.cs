@@ -21,8 +21,6 @@ namespace Entities.Concrete
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string PasswordAgain { get; set; }
-        public bool Status { get; set; }
         public Participant Participant { get; set; }
         public Organizer Organizer { get; set; }
         public ICollection<Event> Events { get; set; }
