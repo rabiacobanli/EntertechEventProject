@@ -44,7 +44,7 @@ namespace EventManagementSystem.Controllers
                     FirstName = userForRegisterDto.FirstName,
                     LastName = userForRegisterDto.LastName,
 
-                }
+                };
             }
 
             return View();
