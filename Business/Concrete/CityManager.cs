@@ -18,29 +18,16 @@ namespace Business.Concrete
             _cityDal = cityDal;
         }
 
-        public void TAdd(City t)
-        {
-            _cityDal.Add(t);
-        }
-
-        public void TDelete(City t)
-        {
-            _cityDal.Delete(t);
-        }
-
-        public List<City> TGetAll()
+        public List<City> GetAll()
         {
             return _cityDal.GetAll();
         }
 
-        public City TGetByID(int id)
+        public City GetById(int cityId)
         {
-            return _cityDal.Get(c => c.CityID == id);
+            return _cityDal.Get(c => c.CityId== cityId);
         }
 
-        public void TUpdate(City t)
-        {
-            _cityDal.Update(t);
-        }
+        
     }
 }

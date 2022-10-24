@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IOrganizerService : IGenericService<Organizer>
+    public interface IOrganizerService
     {
     }
 }

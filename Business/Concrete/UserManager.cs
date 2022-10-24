@@ -18,31 +18,6 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        public void TAdd(User t)
-        {
-            _userDal.Add(t);
-        }
-
-        public void TDelete(User t)
-        {
-            _userDal.Delete(t);
-
-        }
-
-        public List<User> TGetAll()
-        {
-            return _userDal.GetAll();
-        }
-
-        public User TGetByID(int id)
-        {
-            return _userDal.Get(u => u.UserID == id);
-        }
-
-        public void TUpdate(User t)
-        {
-            _userDal.Update(t);
-
-        }
+       
     }
 }

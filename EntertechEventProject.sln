@@ -6,10 +6,18 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{B629381D-C1E2-482E-83FD-B9F6C6764D36}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{BA81A7CC-0B98-4F94-9720-48D65D30B31D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4} = {8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{CC38E328-B39E-4952-8548-6E679CC772EC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4} = {8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManagementSystem", "EventManagementSystem\EventManagementSystem.csproj", "{F5CB72A3-45AC-4305-BF03-B5DC5F40BA16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventManagementSystem", "EventManagementSystem\EventManagementSystem.csproj", "{F5CB72A3-45AC-4305-BF03-B5DC5F40BA16}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,10 @@ Global
 		{F5CB72A3-45AC-4305-BF03-B5DC5F40BA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5CB72A3-45AC-4305-BF03-B5DC5F40BA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5CB72A3-45AC-4305-BF03-B5DC5F40BA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB521E2-6D6B-44ED-8C6A-CE339E3525A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

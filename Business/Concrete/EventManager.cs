@@ -18,29 +18,28 @@ namespace Business.Concrete
             _eventDal = eventDal;
         }
 
-        public void TAdd(Event t)
-        {
-            _eventDal.Add(t);
-        }
-
-        public void TDelete(Event t)
-        {
-            _eventDal.Delete(t);
-        }
-
-        public List<Event> TGetAll()
+        public List<Event> GetAll()
         {
             return _eventDal.GetAll();
         }
 
-        public Event TGetByID(int id)
+        public List<Event> GetAllByCategoryId(int categoryid)
         {
-            return _eventDal.Get(e => e.EventID == id);
+            return _eventDal.GetAll(c => c.CategoryId == categoryid);
         }
 
-        public void TUpdate(Event t)
+        public List<Event> GetAllByCityId(int cityid)
         {
-            _eventDal.Update(t);
+            return _eventDal.GetAll(c => c.CityId == cityid);
         }
+
+        public Event GetById(int productId)
+        {
+            return _eventDal.Get(e => e.EventId == productId);
+        }
+
+        
+
+       
     }
 }

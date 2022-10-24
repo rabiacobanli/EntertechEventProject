@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICategoryService:IGenericService<Category>
+    public interface ICategoryService
     {
+        List<Category> GetAll();  
+        Category GetById(int categoryId);
     }
 }

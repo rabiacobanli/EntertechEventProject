@@ -18,29 +18,6 @@ namespace Business.Concrete
             _organizerDal = organizerDal;
         }
 
-        public void TAdd(Organizer t)
-        {
-            _organizerDal.Add(t);
-        }
-
-        public void TDelete(Organizer t)
-        {
-            _organizerDal.Delete(t);
-        }
-
-        public void TUpdate(Organizer t)
-        {
-            _organizerDal.Update(t);
-        }
-
-        List<Organizer> IGenericService<Organizer>.TGetAll()
-        {
-            return _organizerDal.GetAll();
-        }
-
-        Organizer IGenericService<Organizer>.TGetByID(int id)
-        {
-            return _organizerDal.Get(o => o.ID == id);
-        }
+        
     }
 }

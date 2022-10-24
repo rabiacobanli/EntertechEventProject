@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICityService : IGenericService<City>
+    public interface ICityService
     {
+        List<City> GetAll();
+        City GetById(int cityId);
     }
 }

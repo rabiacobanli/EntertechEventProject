@@ -18,28 +18,21 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
         }
 
-        public void TAdd(Category t)
-        {
-            _categoryDal.Add(t);
-        }
-
-        public void TDelete(Category t)
-        {
-            _categoryDal.Delete(t);
-        }
-
-        public List<Category> TGetAll()
+        public List<Category> GetAll()
         {
             return _categoryDal.GetAll();
         }
 
-        public Category TGetByID(int id)
+        public Category GetById(int categoryId)
         {
-            return _categoryDal.Get(c => c.CategoryID == id);
+            return _categoryDal.Get(c => c.CategoryId == categoryId);
         }
-        public void TUpdate(Category t)
-        {
-            _categoryDal.Update(t);
-        }
+
+        
+
+       
+
+       
+       
     }
 }

@@ -1,3 +1,6 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +12,11 @@ builder.Services.AddDbContext<EventContext>(opts=>
 {
     opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>(builder =>
+    {
+        builder.RegisterModule(new AutofacBusinessModule());
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

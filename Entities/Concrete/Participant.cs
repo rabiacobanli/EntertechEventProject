@@ -1,4 +1,4 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,8 +11,10 @@ namespace Entities.Concrete
 {
     public class Participant : IEntity
     {
-        [Key, ForeignKey(nameof(User))]
-        public int ID { get; set; }
-        public User User { get; set; }
+        //[Key, ForeignKey(nameof(User))]
+        public int ParticipantId { get; set; }
+        public int EventId { get; set; }
+        public int UserId { get; set; }
+        //public User User { get; set; }
     }
 }
